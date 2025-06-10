@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "797558520303",
+    "project_id": "sikhsha-archana",
+    "storage_bucket": "sikhsha-archana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797558520303:android:f226d1be112ca178835e1a",
+        "android_client_info": {
+          "package_name": "com.shikshaarchana.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797558520303-bsbb0bhbad04p2is9924b237jgggkpmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shikshaarchana.app",
+            "certificate_hash": "20ed8e6f338b1e121878ce2ab37896fa078a5d12"
+          }
+        },
+        {
+          "client_id": "797558520303-jcdj01ap0v1mp5hs7vbos8lhvv21dq6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shikshaarchana.app",
+            "certificate_hash": "fb24eeb98ba0b67c7e274436c0b4d0dae1ac0aa6"
+          }
+        },
+        {
+          "client_id": "797558520303-m2l6b4ljud4fm6nfs3d5kq0g8vr3dl71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shikshaarchana.app",
+            "certificate_hash": "c01d1828d05f949da15116b3d428b06a5f18ef9c"
+          }
+        },
+        {
+          "client_id": "797558520303-aal940jnqm9gombnac612p6quj937vls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbYQMI8lPFFZWXSzKlJ-JVR_iYNpAaYXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797558520303-9evdkbget0imsdrr6vs8ep0mli6ho0g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
