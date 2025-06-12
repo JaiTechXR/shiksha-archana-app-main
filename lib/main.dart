@@ -5,13 +5,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:shikshaarchana/firebase_options.dart';
 import 'package:shikshaarchana/preferences.dart';
 import 'package:shikshaarchana/src/presentation/dashboard/dashboard.dart';
 import 'package:shikshaarchana/src/presentation/languagescreen/languagescreen.dart';
 import 'package:shikshaarchana/src/presentation/splashscreen/splashscreen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get/get.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Applocalization/Applocalization.dart';
 import 'l10n/l10n.dart';
 
@@ -25,7 +23,7 @@ void main() async {
   ));
   AppLanguage appLanguage = AppLanguage();
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await appLanguage.fetchLocale();
   runApp(MyApp(
     appLanguage: appLanguage,
@@ -65,6 +63,7 @@ class _MyAppState extends State<MyApp> {
                 const TranslationsDelegate(),
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: [
                 const Locale('en', ''),

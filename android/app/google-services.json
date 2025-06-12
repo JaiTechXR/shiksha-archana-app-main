@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "797558520303-ec1728d4pa0cda8eqtbudnhhab5jptg3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shikshaarchana.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "797558520303-jcdj01ap0v1mp5hs7vbos8lhvv21dq6c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

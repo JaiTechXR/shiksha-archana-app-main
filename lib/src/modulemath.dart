@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestoaudio_cache.dartre/cloud_firestore.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../Constant/Constants.dart';
 
