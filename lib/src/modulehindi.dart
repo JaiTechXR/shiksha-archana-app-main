@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
+// import 'package:audioplayers/audio_cache.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -14,30 +14,31 @@ class modulehindi extends StatefulWidget {
 
 class _modulehindiState extends State<modulehindi> {
   var ModuleData;
-  AudioPlayer player = AudioPlayer(mode: PlayerMode.MEDIA_PLAYER);
-  bool isPlaying = false;
+  AudioPlayer player = AudioPlayer(); // Updated player initialization
 
   @override
   void initState() {
     getModule();
-    // TODO: implement initState
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    player.dispose(); // Clean up player when widget is disposed
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      body: ModuleData == null
-          ? CircularProgressIndicator()
-          : Container(
-              child: CarouselSlider.builder(
-              itemCount: ModuleData.length,
-              itemBuilder:
-                  (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      Column(
+      child: Scaffold(
+        body: ModuleData == null
+            ? Center(child: CircularProgressIndicator())
+            : CarouselSlider.builder(
+          itemCount: ModuleData.length,
+          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -62,33 +63,27 @@ class _modulehindiState extends State<modulehindi> {
                   ModuleData[itemIndex]['image'] == null
                       ? CircularProgressIndicator()
                       : Align(
-                          alignment: Alignment.center,
-                          child: Image.network(
-                            Constant.driveUrl + ModuleData[itemIndex]['image'],
-                            height: 220,
-                            width: 220,
-                            fit: BoxFit.contain,
-                            loadingBuilder: (BuildContext? ctx, Widget? child,
-                                ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) {
-                                return Image.network(
-                                  Constant.driveUrl +
-                                      ModuleData[itemIndex]['image'],
-                                  height: 220,
-                                  width: 220,
-                                  fit: BoxFit.contain,
-                                );
-                              } else {
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.green),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-                        ),
+                    alignment: Alignment.center,
+                    child: Image.network(
+                      Constant.driveUrl + ModuleData[itemIndex]['image'],
+                      height: 220,
+                      width: 220,
+                      fit: BoxFit.contain,
+                      loadingBuilder: (BuildContext? ctx, Widget? child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child!;
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.green),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
                   SizedBox(height: 25),
                   Container(
                     decoration: BoxDecoration(
@@ -104,7 +99,6 @@ class _modulehindiState extends State<modulehindi> {
                       ),
                     ),
                   ),
-
                   Container(
                     decoration: BoxDecoration(
                         color: Color(0xffffffff),
@@ -119,56 +113,51 @@ class _modulehindiState extends State<modulehindi> {
                       ),
                     ),
                   ),
-                  //  SizedBox(height: 10),
-
                   Align(
                     alignment: Alignment.center,
                     child: GestureDetector(
-                        onTap: () async {
-                          await player.play(
-                              Constant.driveUrl +
-                                  ModuleData[itemIndex]['audio'],
-                              isLocal: true);
+                      onTap: () async {
+                        String audioUrl =
+                            Constant.driveUrl + ModuleData[itemIndex]['audio'];
 
-                          //  player.state==AudioPlayerState.STOPPED
+                        // Stop any currently playing audio
+                        await player.stop();
 
-                          // audioPlayer.play(Constant.driveUrl+ModuleData[itemIndex]['audio']);
-                        },
-                        child: const Icon(
-                          Icons.play_circle,
-                          size: 100,
-                          color: Color(0xff25265f),
-                        )),
+                        // Play audio from CDN URL
+                        await player.play(UrlSource(audioUrl));
+                      },
+                      child: const Icon(
+                        Icons.play_circle,
+                        size: 100,
+                        color: Color(0xff25265f),
+                      ),
+                    ),
                   )
                 ],
               ),
-              options: CarouselOptions(
-                onPageChanged: (int i, CarouselPageChangedReason cr) {
-                  if (player.state == AudioPlayerState.PLAYING) {
-                    setState(() {
-                      player.stop();
-                    });
-                  }
-                },
-                autoPlay: false,
-                height: MediaQuery.of(context).size.height - 100,
-                enlargeCenterPage: true,
-                viewportFraction: 1,
-                aspectRatio: 1.0,
-                initialPage: 0,
-              ),
-            )),
-    ));
+          options: CarouselOptions(
+            onPageChanged: (int i, CarouselPageChangedReason cr) async {
+              // Stop audio when the slide changes
+              await player.stop();
+            },
+            autoPlay: false,
+            height: MediaQuery.of(context).size.height - 100,
+            enlargeCenterPage: true,
+            viewportFraction: 1,
+            aspectRatio: 1.0,
+            initialPage: 0,
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> getModule() async {
     QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('module-hindi').get();
+    await FirebaseFirestore.instance.collection('module-hindi').get();
 
-    // Get data from docs and convert map to List
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
 
-    print(allData);
     setState(() {
       ModuleData = allData;
     });

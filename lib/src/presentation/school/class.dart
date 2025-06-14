@@ -9,7 +9,6 @@ import 'package:shikshaarchana/src/presentation/school/classes/class4/four.dart'
 import 'package:shikshaarchana/src/presentation/school/classes/class6/six.dart';
 import 'package:shikshaarchana/src/presentation/school/classes/class7/seven.dart';
 import 'package:shikshaarchana/src/presentation/school/classes/class8/eight.dart';
-import 'package:shikshaarchana/src/presentation/school/classes/class_record.dart';
 import 'package:shikshaarchana/src/presentation/school/classes/nursery/nursery.dart';
 
 class ClassSection extends StatefulWidget {
@@ -430,7 +429,7 @@ class _TeacherSchoolState extends State<ClassSection> {
     );
   }
 
-  _showToast() => Fluttertoast.showToast(
+  Future<bool?> _showToast() => Fluttertoast.showToast(
       msg: "Coming Soon",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,

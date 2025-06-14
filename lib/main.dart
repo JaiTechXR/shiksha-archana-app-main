@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,11 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shikshaarchana/firebase_options.dart';
 import 'package:shikshaarchana/preferences.dart';
-import 'package:shikshaarchana/src/presentation/dashboard/dashboard.dart';
-import 'package:shikshaarchana/src/presentation/languagescreen/languagescreen.dart';
 import 'package:shikshaarchana/src/presentation/splashscreen/splashscreen.dart';
 import 'Applocalization/Applocalization.dart';
-import 'l10n/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,14 +29,14 @@ void main() async {
 class MyApp extends StatefulWidget {
   final AppLanguage appLanguage;
 
-  MyApp({Key? key, required this.appLanguage}) : super(key: key);
+  const MyApp({super.key, required this.appLanguage});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

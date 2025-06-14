@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shikshaarchana/Constant/Constants.dart';
 import 'package:shikshaarchana/preferences.dart';
 import 'package:shikshaarchana/src/BottomNavBar.dart';
-import 'package:shikshaarchana/src/presentation/dashboard/dashboard.dart';
-import 'package:shikshaarchana/src/presentation/onboarding/onboardingscreen.dart';
 import '../languagescreen/languagescreen.dart';
 
 class splash extends StatefulWidget {
@@ -15,12 +13,13 @@ class splash extends StatefulWidget {
 }
 
 class _splashState extends State<splash> {
+  @override
   void initState() {
     super.initState();
     _navigatetologin();
   }
 
-  _navigatetologin() async {
+  Future<void> _navigatetologin() async {
     await Future.delayed(Duration(seconds: 5), () {});
     String number = await SessionManager().getString(Constant.userNumber);
     await SessionManager().getString(Constant.isLogin) == 'true'
@@ -37,8 +36,8 @@ class _splashState extends State<splash> {
 
   @override
   Widget build(BuildContext context) {
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
 
     return Scaffold(
   

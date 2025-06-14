@@ -4,15 +4,12 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shikshaarchana/Applocalization/Apptranslation.dart';
 import 'package:shikshaarchana/src/presentation/onboarding/edit_profile.dart';
 
-import '../../../Constant/Constants.dart';
 import '../../../preferences.dart';
-import '../onboarding/onboardingscreen.dart';
 import '../splashscreen/splashscreen.dart';
 
 class profile extends StatefulWidget {
@@ -48,8 +45,8 @@ class _profileState extends State<profile> {
   var UserData;
   @override
   Widget build(BuildContext context) {
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -82,7 +79,7 @@ class _profileState extends State<profile> {
                             // SizedBox(
                             //   width: 60.w,
                             // ),
-                            Container(
+                            SizedBox(
                               height: 19.h,
                               // width: 296.w,
                               child: Align(
@@ -106,7 +103,7 @@ class _profileState extends State<profile> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Container(
+                      SizedBox(
                         // color: Colors.yellow,
                         height: 225.h,
                         width: 356.w,
@@ -124,7 +121,7 @@ class _profileState extends State<profile> {
                                   fit: BoxFit.cover,
                                 )),
                           ),
-                          Container(
+                          SizedBox(
                             height: 70.h,
                             width: double.infinity,
                             // color: Colors.blue,
@@ -264,7 +261,7 @@ class _profileState extends State<profile> {
                                   return StatefulBuilder(builder:
                                       (BuildContext context,
                                           StateSetter setState) {
-                                    return Container(
+                                    return SizedBox(
                                       height: 340.h,
                                       child: Container(
                                         height: 316.h,
@@ -325,7 +322,7 @@ class _profileState extends State<profile> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10.0.sp)),
-                                                  primary: enButtonColor == 1
+                                                  backgroundColor: enButtonColor == 1
                                                       ? Colors.white
                                                       : Color(0xff25265f)),
                                               child: Center(
@@ -370,7 +367,7 @@ class _profileState extends State<profile> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10.sp)),
-                                                  primary: hiButtonColor == 1
+                                                  backgroundColor: hiButtonColor == 1
                                                       ? Colors.white
                                                       : Color(0xff25265f)),
                                               child: Center(
@@ -500,7 +497,7 @@ class _profileState extends State<profile> {
                             endText("Logout", () {
                               SessionManager().cleanPrefernces();
                   auth.signOut();
-                  Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => new splash(),),);
+                  Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => splash(),),);
                             }),
                             SizedBox(
                               height: 3.sp,
@@ -551,7 +548,7 @@ class _profileState extends State<profile> {
             child: Padding(
               padding: EdgeInsets.only(left: 25.6.w, top: 12.7.h),
               child: Text(
-                '$title',
+                title,
                 style: TextStyle(
                   color: Color(0xff25265f),
                   fontSize: 10.9.sp,
@@ -564,7 +561,7 @@ class _profileState extends State<profile> {
             child: Padding(
               padding: EdgeInsets.only(left: 25.6.w, top: 5.sp),
               child: Text(
-                '$data',
+                data,
                 style: TextStyle(
                   color: Color(0xff25265f),
                   fontSize: 14.9.sp,
@@ -582,7 +579,7 @@ class _profileState extends State<profile> {
       child: InkWell(
         onTap: onTap,
         child: Text(
-          "$title",
+          title,
           style: TextStyle(
             color: Color(0xff25265f),
             fontSize: 18.sp,

@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shikshaarchana/src/presentation/findteacherschool/databasemanager.dart';
 import 'package:shikshaarchana/src/presentation/findteacherschool/findteacher/teacherdetail.dart';
 
-import 'package:shikshaarchana/test.dart';
 
 class TeacherScreen extends StatefulWidget {
   const TeacherScreen({super.key});
@@ -44,7 +42,7 @@ class _TeacherScreenState extends State<TeacherScreen> {
     fetchDatabaseList();
   }
 
-  fetchDatabaseList() async {
+  Future<void> fetchDatabaseList() async {
     dynamic resultant = await DatabaseManager().getUsersList();
     if (resultant == null) {
       print("Unable to retrieve");

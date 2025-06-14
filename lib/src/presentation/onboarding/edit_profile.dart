@@ -80,18 +80,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   TextEditingController countryCode = TextEditingController();
 
-  final firstNameEditingController = new TextEditingController();
-  final lastNameEditingController = new TextEditingController();
-  final dateofBirthEditingController = new TextEditingController();
-  final genderEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
+  final firstNameEditingController = TextEditingController();
+  final lastNameEditingController = TextEditingController();
+  final dateofBirthEditingController = TextEditingController();
+  final genderEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
 
-  final disabilityEditingController = new TextEditingController();
-  final schoolEditingController = new TextEditingController();
-  final classEditingController = new TextEditingController();
-  final motherNameEditingController = new TextEditingController();
-  final fatherNameEditingController = new TextEditingController();
-  final phoneNumberEditingController = new TextEditingController();
+  final disabilityEditingController = TextEditingController();
+  final schoolEditingController = TextEditingController();
+  final classEditingController = TextEditingController();
+  final motherNameEditingController = TextEditingController();
+  final fatherNameEditingController = TextEditingController();
+  final phoneNumberEditingController = TextEditingController();
+  @override
   void initState() {
     countryCode.text = widget.number;
     // getId();
@@ -115,7 +116,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   // }
 
   final _auth = FirebaseAuth.instance;
-  FirebaseStorage _storage = FirebaseStorage.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // final _auth = FirebaseAuth.instance;
   File? photo = File('');
@@ -129,14 +130,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       dob = widget.dob;
     }
 
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
     final firstNameField = TextFormField(
         autofocus: false,
         controller: firstNameEditingController,
         keyboardType: TextInputType.name,
         validator: (value) {
-          RegExp regex = new RegExp(r'^.{3,}$');
+          RegExp regex = RegExp(r'^.{3,}$');
           if (value!.isEmpty) {
             return ("First Name cannot be Empty");
           }
@@ -339,7 +340,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         controller: classEditingController,
         keyboardType: TextInputType.number,
         validator: (value) {
-          RegExp regex = new RegExp(r'/^(?:[+0]9)?[0-9]{3}$/');
+          RegExp regex = RegExp(r'/^(?:[+0]9)?[0-9]{3}$/');
           if (value!.isEmpty) {
             return ("Class cannot be Empty");
           }
@@ -426,7 +427,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         controller: countryCode,
         keyboardType: TextInputType.number,
         validator: (value) {
-          RegExp regex = new RegExp(r'/^(?:[+0]9)?[0-9]{10}$/');
+          RegExp regex = RegExp(r'/^(?:[+0]9)?[0-9]{10}$/');
           if (value!.isEmpty) {
             return ("Phone Number cannot be Empty");
           }
@@ -522,8 +523,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             ),
                             // image: DecorationImage(image: )
                           ),
-                          width: width_varible * 0.3,
-                          height: height_variable * 0.12,
+                          width: widthVarible * 0.3,
+                          height: heightVariable * 0.12,
                           // child: photo == null
                           //     ? null
                           //     : Container(
@@ -575,7 +576,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: height_variable * 0.03,
+                      height: heightVariable * 0.03,
                     ),
                     Container(
                       child: Column(
@@ -738,7 +739,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height_variable * 0.026,
+                      height: heightVariable * 0.026,
                     ),
                   ],
                 );
@@ -799,8 +800,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       return iosDeviceInfo.identifierForVendor; // unique ID on iOS
     } else if (Platform.isAndroid) {
       var androidDeviceInfo = await deviceInfo.androidInfo;
-      return androidDeviceInfo.androidId; // unique ID on Android
+      return androidDeviceInfo.id; // unique ID on Android
     }
+    return null;
   }
 
 //compress the picked image in KB
@@ -825,7 +827,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           await customCompressed(imagaePathToCompress: imageTemp);
       final sizeInKb = compressedImage.lengthSync() / 1024;
       if (sizeInKb <= 1024) {
-        print("\nimage size is: " + sizeInKb.toString());
+        print("\nimage size is: $sizeInKb");
         setState(() => photo = compressedImage);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -833,7 +835,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             content: Text('Image size should be less than 1 MB'),
           ),
         );
-        print("\nimage size is: " + sizeInKb.toString());
+        print("\nimage size is: $sizeInKb");
       }
       // setState(() => photo = imageTemp);
     } on PlatformException catch (e) {
@@ -850,10 +852,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           await customCompressed(imagaePathToCompress: imageTemp);
       final sizeInKb = compressedImage.lengthSync() / 1024;
       if (sizeInKb <= 1024) {
-        print("\nimage size is: " + sizeInKb.toString());
+        print("\nimage size is: $sizeInKb");
         setState(() => photo = compressedImage);
       } else {
-        print("\nimage size is: " + sizeInKb.toString());
+        print("\nimage size is: $sizeInKb");
       }
       // setState(() => photo = imageTemp);
     } on PlatformException catch (e) {

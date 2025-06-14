@@ -82,6 +82,9 @@ Widget bookbox(String title, String des) {
       margin: EdgeInsets.fromLTRB(0, 0, 0, 15.sp),
       width: 350.sp,
       height: 120.sp,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14.sp),
+          color: Color.fromARGB(255, 161, 167, 196)),
       child: Row(
         children: [
           Padding(padding: EdgeInsets.fromLTRB(12.sp, 0, 0, 0)),
@@ -127,7 +130,7 @@ Widget bookbox(String title, String des) {
                     fontSize: 18.sp,
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 210.sp,
                   // color: Colors.orange,
                   child: Column(
@@ -150,10 +153,7 @@ Widget bookbox(String title, String des) {
             ),
           ),
         ],
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14.sp),
-          color: Color.fromARGB(255, 161, 167, 196)));
+      ));
 }
 
 Widget button(double width, String title, Function()? onTap) {

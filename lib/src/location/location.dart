@@ -13,6 +13,6 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(child: Text("Location Page",),),
-    );;
+    );
   }
 }

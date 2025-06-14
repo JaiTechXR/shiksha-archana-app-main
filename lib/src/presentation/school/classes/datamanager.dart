@@ -8,9 +8,9 @@ class databasemanager {
     List itemsList = [];
     try {
       await profileList.get().then((querySnapshot) {
-        querySnapshot.docs.forEach((element) {
+        for (var element in querySnapshot.docs) {
           itemsList.add(element.data());
-        });
+        }
       });
       return itemsList;
     } catch (e) {

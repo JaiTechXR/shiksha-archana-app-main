@@ -5,7 +5,7 @@ class AppLanguage extends ChangeNotifier {
   Locale _appLocale = Locale('en');
 
   Locale get appLocal => _appLocale;
-  fetchLocale() async {
+  Future<Null> fetchLocale() async {
     var prefs = await SharedPreferences.getInstance();
     if (prefs.getString('language_code') == null) {
       _appLocale = Locale('en');
@@ -51,13 +51,13 @@ class SessionManager {
   Future<String> getString(key)  async {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String value = sharedPreferences.getString(key)  ?? '';
-    print("value "+value);
+    print("value $value");
     return value ;
 
   }
 
 
-  cleanPrefernces() async {
+  Future<void> cleanPrefernces() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.clear();

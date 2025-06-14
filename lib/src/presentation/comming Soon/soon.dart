@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shikshaarchana/Applocalization/Applocalization.dart';
 
 import '../../../Applocalization/Apptranslation.dart';
 
@@ -13,14 +12,14 @@ class soon extends StatefulWidget {
 class _soonState extends State<soon> {
   @override
   Widget build(BuildContext context) {
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
           child: Column(
         children: [
-          Container(
-            height: height_variable * 0.8,
+          SizedBox(
+            height: heightVariable * 0.8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

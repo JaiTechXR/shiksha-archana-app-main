@@ -17,7 +17,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  final phoneNumberEditingController = new TextEditingController();
+  final phoneNumberEditingController = TextEditingController();
   TextEditingController countryCode = TextEditingController();
   var phone = "";
   var mes = 'e';
@@ -28,6 +28,7 @@ class _loginState extends State<login> {
   }
 
   int? _resendToken;
+  @override
   Widget build(BuildContext context) {
     final phoneNumberField = TextFormField(
         style: TextStyle(
@@ -38,7 +39,7 @@ class _loginState extends State<login> {
         controller: countryCode,
         keyboardType: TextInputType.number,
         validator: (value) {
-          RegExp regex = new RegExp(r'/^(?:[+0]9)?[0-9]{10}$/');
+          RegExp regex = RegExp(r'/^(?:[+0]9)?[0-9]{10}$/');
           if (value!.isEmpty) {
             return ("Phone Number cannot be Empty");
           }
@@ -58,8 +59,8 @@ class _loginState extends State<login> {
           contentPadding: EdgeInsets.fromLTRB(25, 15, 20, 15),
           hintText: "Phone Number",
         ));
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -71,8 +72,8 @@ class _loginState extends State<login> {
               // height: double.infinity,
               width: double.infinity,
               // color: Colors.blue,
-              margin: EdgeInsets.fromLTRB(width_varible * 0.05,
-                  height_variable * 0.05, width_varible * 0.05, 0),
+              margin: EdgeInsets.fromLTRB(widthVarible * 0.05,
+                  heightVariable * 0.05, widthVarible * 0.05, 0),
               child: Column(
                 children: [
                   SizedBox(
@@ -86,7 +87,7 @@ class _loginState extends State<login> {
                     ),
                   ),
                   SizedBox(
-                    height: height_variable * 0.04,
+                    height: heightVariable * 0.04,
                   ),
                   Container(
                     child: Column(
@@ -161,12 +162,12 @@ class _loginState extends State<login> {
                                   horizontal: 50.0, vertical: 10.0),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0)),
-                              primary: Color.fromRGBO(37, 38, 95, 10)),
+                              backgroundColor: Color.fromRGBO(37, 38, 95, 10)),
                           child: Text(
                             LanguageTranslation.of(context)!.value("Continue"),
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: height_variable * 0.025),
+                                fontSize: heightVariable * 0.025),
                           ),
                         ),
                       ],

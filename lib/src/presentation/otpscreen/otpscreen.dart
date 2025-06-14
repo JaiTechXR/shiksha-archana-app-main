@@ -4,11 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shikshaarchana/CustomWidget.dart';
 import 'package:shikshaarchana/preferences.dart';
 import 'package:shikshaarchana/src/BottomNavBar.dart';
-import 'package:shikshaarchana/src/presentation/dashboard/dashboard.dart';
 import '../../../Applocalization/Apptranslation.dart';
 import '../../../Constant/Constants.dart';
 import '../login/loginscreen.dart';
@@ -29,7 +27,7 @@ class _otpState extends State<otp> {
   int? _resendToken;
   _otpState({required this.number});
   late bool isRegistered;
-  final otpEditingController = new TextEditingController();
+  final otpEditingController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
@@ -52,7 +50,7 @@ class _otpState extends State<otp> {
   bool wait = false;
   void startTimer() {
     const onsec = Duration(seconds: 1);
-    Timer _timer = Timer.periodic(onsec, (timer) {
+    Timer timer = Timer.periodic(onsec, (timer) {
       if (start == 0) {
         setState(() {
           timer.cancel();
@@ -67,6 +65,7 @@ class _otpState extends State<otp> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     TextFormField otpField = TextFormField(
         autofocus: false,
@@ -79,7 +78,7 @@ class _otpState extends State<otp> {
           });
         },
         validator: (value) {
-          RegExp regex = new RegExp(r'/^(?:[+0]9)?[0-9]{6}$/');
+          RegExp regex = RegExp(r'/^(?:[+0]9)?[0-9]{6}$/');
           if (value!.isEmpty) {
             return ("OTP cannot be Empty");
           }
@@ -100,15 +99,15 @@ class _otpState extends State<otp> {
           //   borderRadius: BorderRadius.circular(10),
           // ),
         ));
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 738.h,
               child: Column(
                 children: [
@@ -131,8 +130,8 @@ class _otpState extends State<otp> {
                     height: 80.h,
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(width_varible * 0.05,
-                        height_variable * 0.05, width_varible * 0.05, 0),
+                    margin: EdgeInsets.fromLTRB(widthVarible * 0.05,
+                        heightVariable * 0.05, widthVarible * 0.05, 0),
                     child: Column(
                       children: [
                         Text(
@@ -163,7 +162,7 @@ class _otpState extends State<otp> {
                         SizedBox(
                           height: 102.h,
                         ),
-                        Container(
+                        SizedBox(
                           width: 230.w,
                           child: Column(
                             children: [
@@ -426,7 +425,7 @@ class _otpState extends State<otp> {
                               horizontal: 50.0.sp, vertical: 10.0.sp),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.sp)),
-                          primary: Color.fromRGBO(37, 38, 95, 10)),
+                          backgroundColor: Color.fromRGBO(37, 38, 95, 10)),
                       child: Text(
                         LanguageTranslation.of(context)!.value("Continue"),
                         style: TextStyle(color: Colors.white, fontSize: 18.sp),

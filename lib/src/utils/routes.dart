@@ -1,8 +1,5 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:shikshaarchana/src/utils/routes_name.dart';
 
-import '../BottomNavBar.dart';
 
 
 class Routes {

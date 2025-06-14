@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 
 class GetUserDetail extends StatelessWidget {
   // const GetUserDetail({super.key});
   final String documentId;
-  GetUserDetail({required this.documentId});
+  const GetUserDetail({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class GetUserDetail extends StatelessWidget {
         return Text("Name");
       }
       return Text("Name");
-    }));
+    }), future: null,);
   }
 }
 // class DataController extends Getontroller {}

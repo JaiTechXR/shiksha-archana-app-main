@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:shikshaarchana/src/presentation/profile/profilescreen.dart';
-import 'package:shikshaarchana/test.dart';
 
 import '../../../Applocalization/Apptranslation.dart';
-import '../../../Constant/Constants.dart';
-import '../comming Soon/soon.dart';
 import '../term&conditionscreen/termsscreen.dart';
 import '../../../preferences.dart';
 
@@ -159,7 +155,7 @@ class _languageState extends State<language> {
                             side: const BorderSide(
                                 width: 1.0, color: Color(0xff25265f)),
                             borderRadius: BorderRadius.circular(10.0.sp)),
-                        primary: enButtonColor == 1
+                        backgroundColor: enButtonColor == 1
                             ? Color(0xff25265f)
                             : Colors.white),
                     child: Center(
@@ -199,7 +195,7 @@ class _languageState extends State<language> {
                             side: const BorderSide(
                                 width: 1.0, color: Color(0xff25265f)),
                             borderRadius: BorderRadius.circular(10.sp)),
-                        primary: hiButtonColor == 1
+                        backgroundColor: hiButtonColor == 1
                             ? Color(0xff25265f)
                             : Colors.white),
                     child: Center(

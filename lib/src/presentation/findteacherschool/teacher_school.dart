@@ -206,7 +206,7 @@ class _TeacherSchoolState extends State<TeacherSchool> {
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                "$title",
+                title,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 16.sp,

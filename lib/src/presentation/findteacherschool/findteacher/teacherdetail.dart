@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +12,7 @@ class TeacherDetail extends StatefulWidget {
   final List<dynamic> qualification;
   final Map<dynamic, dynamic> experience;
 
-  TeacherDetail({
+  const TeacherDetail({
     super.key,
     required this.name,
     required this.email,
@@ -257,7 +256,7 @@ class _TeacherDetailState extends State<TeacherDetail> {
                           SizedBox(
                             height: 7.h,
                           ),
-                          Container(
+                          SizedBox(
                             width: 300.w,
                             child: contentText(
                               "Address: ${widget.address}",
@@ -291,7 +290,7 @@ class _TeacherDetailState extends State<TeacherDetail> {
   }
 
   Widget boxDesign(String title) {
-    return Container(
+    return SizedBox(
       // color: Colors.red,
       height: 33.h,
       width: 310.w,
@@ -330,7 +329,7 @@ class _TeacherDetailState extends State<TeacherDetail> {
   }
 
   Widget experienceDesign(String title, String description) {
-    return Container(
+    return SizedBox(
       // color: Colors.red,
       height: 35.h,
       width: 310.w,

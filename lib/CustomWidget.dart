@@ -21,7 +21,7 @@ class CustomWidget{
           return WillPopScope(
             onWillPop: () async => false,
 
-            child: Container(
+            child: SizedBox(
               width: 100,
               height: 100,
               child: CircleAvatar(

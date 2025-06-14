@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import '../term&conditionscreen/termAndConditions.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shikshaarchana/src/presentation/login/loginscreen.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../Applocalization/Apptranslation.dart';
-import '../onboarding/onboardingscreen.dart';
 
 class term extends StatefulWidget {
   const term({super.key});
@@ -23,8 +21,8 @@ class _termState extends State<term> {
   bool Check = false;
   @override
   Widget build(BuildContext context) {
-    double height_variable = MediaQuery.of(context).size.height;
-    double width_varible = MediaQuery.of(context).size.width;
+    double heightVariable = MediaQuery.of(context).size.height;
+    double widthVarible = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
         children: [
@@ -64,7 +62,7 @@ class _termState extends State<term> {
                       height: 18.h,
                     ),
                     // TermCondition.termCondition,
-                     Container(
+                     SizedBox(
                         height: 525.h,
                         width: 330.w,
                         // color: Colors.red,
@@ -154,7 +152,7 @@ class _termState extends State<term> {
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(12.sp)),
-                                      primary: Colors.white),
+                                      backgroundColor: Colors.white),
                                   child: Text(
                                     LanguageTranslation.of(context)!
                                         .value("Quit"),
@@ -189,7 +187,7 @@ class _termState extends State<term> {
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(12.sp)),
-                                      primary: Check == true
+                                      backgroundColor: Check == true
                                           ? Color(0xff25265f)
                                           : Colors.grey),
                                   child: Text(

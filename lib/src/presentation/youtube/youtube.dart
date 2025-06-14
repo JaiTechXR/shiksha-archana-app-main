@@ -276,6 +276,9 @@ class _youtubeState extends State<youtube> {
         margin: EdgeInsets.fromLTRB(0, 0, 0, 15.sp),
         width: 350.sp,
         height: 120.sp,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14.sp),
+            color: Color.fromARGB(255, 161, 167, 196)),
         child: Row(
           children: [
             Padding(padding: EdgeInsets.fromLTRB(12.sp, 0, 0, 0)),
@@ -321,7 +324,7 @@ class _youtubeState extends State<youtube> {
                       fontSize: 18.sp,
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 210.sp,
                     // color: Colors.orange,
                     child: Column(
@@ -345,9 +348,6 @@ class _youtubeState extends State<youtube> {
               ),
             ),
           ],
-        ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14.sp),
-            color: Color.fromARGB(255, 161, 167, 196)));
+        ));
   }
 }
